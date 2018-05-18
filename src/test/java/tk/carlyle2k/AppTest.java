@@ -19,8 +19,8 @@ public class AppTest {
                 {0, 0, 0}
         };
 
-        assertArrayEquals(app.flipAndInvertImage(m1), new int[][]{{1, 0, 0},
-                {0, 1, 0}, {1, 1, 1}});
+        assertArrayEquals(new int[][]{{1, 0, 0},
+                {0, 1, 0}, {1, 1, 1}}, app.flipAndInvertImage(m1));
 
         int[][] m2 = new int[][] {
                 {1,1,0,0},
@@ -29,8 +29,8 @@ public class AppTest {
                 {1,0,1,0}
         };
 
-        assertArrayEquals(app.flipAndInvertImage(m2), new int[][] {{1,1,0,0},
-                {0,1,1,0}, {0,0,0,1}, {1,0,1,0}});
+        assertArrayEquals(new int[][] {{1,1,0,0},
+                {0,1,1,0}, {0,0,0,1}, {1,0,1,0}}, app.flipAndInvertImage(m2));
     }
 
     @Test
