@@ -44,4 +44,31 @@ public class AppTest {
         assertEquals(output2, app.partitionLabels(input2));
 
     }
+
+    @Test
+    public void complexNumberMultiply() {
+        String input1 = "13+99i";
+        String input2 = "14+99i";
+        assertEquals("-9619+2673i", app.complexNumberMultiply(input1, input2));
+
+        input1 = "1+-1i";
+        input2 = "1+-1i";
+        assertEquals("0+-2i", app.complexNumberMultiply(input1, input2));
+    }
+
+    @Test
+    public void countBattleships() {
+        char[][] input1 = {{'X', '.', '.', 'X'},
+                {'.', '.', '.', 'X'},
+                {'.', '.', '.', 'X'}};
+
+        assertEquals(2, app.countBattleships(input1));
+
+        input1 = new char[][] {{'X', '.', 'X', '.', 'X'},
+                {'X', '.', '.', '.', 'X'},
+                {'.', '.', '.', '.', '.'},
+                {'X', 'X', 'X', '.', '.'}};
+
+        assertEquals(4, app.countBattleships(input1));
+    }
 }

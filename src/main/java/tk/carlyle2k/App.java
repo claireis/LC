@@ -8,6 +8,74 @@ import java.util.Map;
 public class App {
 
     /**
+     * 419. Battleships in a Board
+     */
+    public int countBattleships(char[][] board) {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 'X') {
+                    if (i > 0 && board[i - 1][j] == 'X') {
+                        continue;
+                    }
+
+                    if (j > 0 && board[i][j - 1] == 'X') {
+                        continue;
+                    }
+
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    /**
+     * 537. Complex Number Multiplication
+     */
+    public String complexNumberMultiply(String a, String b) {
+        String[] first = a.split("\\+");
+        String[] second = b.split("\\+");
+
+        String firstImage = first[1].substring(0, first[1].length() - 1);
+        String secondImage = second[1].substring(0, second[1].length() - 1);
+        int real = Integer.parseInt(first[0]) * Integer.parseInt(second[0]) -
+                Integer.parseInt(firstImage) * Integer.parseInt(secondImage);
+
+        int image = Integer.parseInt(firstImage) * Integer.parseInt(second[0]) +
+                Integer.parseInt(secondImage) * Integer.parseInt(first[0]);
+
+        return real + "+" + image + "i";
+    }
+
+    /**
+     * 797. All Paths From Source to Target
+     */
+    // public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+    //     List<List<Integer>> res = new ArrayList<>();
+    //     List<Integer> path = new ArrayList<>();
+    //
+    //     path.add(0);
+    //     dfsSearch(graph, 0, res, path);
+    //
+    //     return res;
+    // }
+    //
+    // private void dfsSearch(int[][] graph, int node, List<List<Integer>> res, List<Integer> path) {
+    //     if (node == graph.length - 1) {
+    //         res.add(new ArrayList<>(path));
+    //         return;
+    //     }
+    //
+    //     for (int nextNode : graph[node]) {
+    //         path.add(nextNode);
+    //         dfsSearch(graph, nextNode, res, path);
+    //         path.remove(path.size() - 1);
+    //     }
+    // }
+
+    /**
      * 832. Flipping an Image
      */
     public int[][] flipAndInvertImage(int[][] A) {
@@ -35,7 +103,7 @@ public class App {
 
         Map<Character, Integer> position = new HashMap<>();
         for (int i = 0; i < chars.length; i++) {
-                position.put(chars[i], i);
+            position.put(chars[i], i);
         }
 
         List<Integer> partition = new ArrayList<>();
