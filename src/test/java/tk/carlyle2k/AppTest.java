@@ -83,4 +83,11 @@ public class AppTest {
         C = 'c';
         assertArrayEquals(new int[]{3, 2, 1, 0}, app.shortestToChar(intput1, C));
     }
+
+    @Test
+    public void countBits() {
+        int input = 5;
+
+        assertArrayEquals(new int[]{0, 1, 1, 2, 1, 2}, app.countBits(5));
+    }
 }

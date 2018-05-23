@@ -5,6 +5,31 @@ import java.util.*;
 public class App {
 
     /**
+     * 338. Counting Bits
+     */
+    public int[] countBits(int num) {
+        int[] ret = new int[num + 1];
+
+        for (int i = 0; i <= num; i++) {
+            ret[i] = countBitsHelper(i);
+        }
+
+        return ret;
+    }
+
+    private static int countBitsHelper(int num) {
+        int count = 0;
+        while (num > 0) {
+            if ((num & 1) == 1)
+                count++;
+
+            num >>= 1;
+        }
+
+        return count;
+    }
+
+    /**
      * 821. Shortest Distance to a Character
      */
     public int[] shortestToChar(String S, char C) {
