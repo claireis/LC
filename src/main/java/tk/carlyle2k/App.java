@@ -1,11 +1,38 @@
 package tk.carlyle2k;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class App {
+
+    /**
+     * 821. Shortest Distance to a Character
+     */
+    public int[] shortestToChar(String S, char C) {
+        char[] chars = S.toCharArray();
+        int[] ret = new int[chars.length];
+
+        int index = -1;
+        Deque<Integer> queue = new ArrayDeque<>();
+        for (char i : chars) {
+            index++;
+            if (i == C) {
+                queue.add(index);
+            }
+        }
+
+        int cur = queue.poll();
+        int next = queue.isEmpty() ? Integer.MAX_VALUE : queue.poll();
+        for (int i = 0; i < chars.length; i++) {
+            ret[i] = Math.min(Math.abs(cur - i), Math.abs(next - i));
+
+            if (i == next && !queue.isEmpty()) {
+                cur = next;
+                next = queue.poll();
+            }
+        }
+
+        return ret;
+    }
 
     /**
      * 419. Battleships in a Board

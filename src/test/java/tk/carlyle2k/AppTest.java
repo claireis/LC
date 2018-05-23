@@ -71,4 +71,16 @@ public class AppTest {
 
         assertEquals(4, app.countBattleships(input1));
     }
+
+    @Test
+    public void shortestToChar() {
+        String intput1 = "loveleetcode";
+        char C = 'e';
+
+        assertArrayEquals(new int[]{3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0}, app.shortestToChar(intput1, C));
+
+        intput1 = "aaac";
+        C = 'c';
+        assertArrayEquals(new int[]{3, 2, 1, 0}, app.shortestToChar(intput1, C));
+    }
 }
