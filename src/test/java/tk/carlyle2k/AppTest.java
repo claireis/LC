@@ -102,4 +102,22 @@ public class AppTest {
         input2 = "abcdefghijklmncc";
         assertEquals("fdcccabeghijklmn", app.customSortString(input1, input2));
     }
+
+    @Test
+    public void findDuplicates() {
+        int[] input = {2, 4, 2, 3, 3, 1, 9, 8, 4};
+
+        assertEquals(Arrays.asList(2, 3, 4), app.findDuplicates(input));
+    }
+
+    @Test
+    public void reconstructQueue() {
+        int[][] input = {{7, 1}, {4, 4}, {7, 0}, {5, 2}, {6, 1}, {5, 0}, {4, 5}, {4, 6}, {4, 7}, {2, 3}};
+
+        assertArrayEquals(new int[][]{{5, 0}, {7, 0}, {5, 2}, {2, 3}, {6, 1}, {4, 4}, {4, 5}, {4, 6}, {4, 7}, {7, 1}}, app.reconstructQueue(input));
+
+        input = new int[][]{};
+
+        assertArrayEquals(new int[][]{}, app.reconstructQueue(input));
+    }
 }

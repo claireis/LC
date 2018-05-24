@@ -1,8 +1,51 @@
 package tk.carlyle2k;
 
+
 import java.util.*;
 
 public class App {
+
+    /**
+     * 406. Queue Reconstruction by Height
+     */
+    public int[][] reconstructQueue(int[][] people) {
+        int[][] ret = new int[people.length][];
+
+        Comparator<int[]> c = Comparator.comparingInt(a -> a[0]);
+        Arrays.sort(people, c);
+
+        for (int i = 0; i < people.length; i++) {
+            int gap = people[i][1];
+            for (int j = 0; j < ret.length; j++) {
+                if (ret[j] == null && gap == 0) {
+                    ret[j] = people[i];
+                    break;
+                }
+
+                if (ret[j] == null || ret[j][0] == people[i][0]) {
+                    gap--;
+                }
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * 442. Find All Duplicates in an Array
+     */
+    public List<Integer> findDuplicates(int[] nums) {
+        Set<Integer> set = new HashSet<>(nums.length);
+
+        List<Integer> ret = new ArrayList<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                ret.add(num);
+            }
+        }
+
+        return ret;
+    }
 
     /**
      * 791. Custom Sort String
