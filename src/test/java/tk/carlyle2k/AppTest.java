@@ -90,4 +90,16 @@ public class AppTest {
 
         assertArrayEquals(new int[]{0, 1, 1, 2, 1, 2}, app.countBits(5));
     }
+
+    @Test
+    public void customSortString() {
+        String input1 = "cba";
+        String input2 = "abcd";
+
+        assertEquals("cbad", app.customSortString(input1, input2));
+
+        input1 = "fdc";
+        input2 = "abcdefghijklmncc";
+        assertEquals("fdcccabeghijklmn", app.customSortString(input1, input2));
+    }
 }

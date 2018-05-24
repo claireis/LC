@@ -5,6 +5,33 @@ import java.util.*;
 public class App {
 
     /**
+     * 791. Custom Sort String
+     */
+    public String customSortString(String S, String T) {
+        int[] counts = new int[26];
+
+        for (char c : T.toCharArray()) {
+            counts[c - 'a']++;
+        }
+
+        char[] ret = new char[T.length()];
+        int index = 0;
+        for (char c : S.toCharArray()) {
+            while (counts[c - 'a']-- > 0) {
+                ret[index++] = c;
+            }
+        }
+
+        for (int i = 0; i < counts.length; i++) {
+            while (counts[i]-- > 0) {
+                ret[index++] = (char) ('a' + i);
+            }
+        }
+
+        return new String(ret);
+    }
+
+    /**
      * 338. Counting Bits
      */
     public int[] countBits(int num) {
