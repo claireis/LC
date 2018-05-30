@@ -178,4 +178,27 @@ public class AppTest {
 
         assertEquals("heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa", app.toGoatLatin(input));
     }
+
+    @Test
+    public void findBottomLeftValueTest() {
+        TreeNode root = new TreeNode(2);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(3);
+
+        assertEquals(1, app.findBottomLeftValue(root));
+
+        root = new TreeNode(1);
+        TreeNode t1 = new TreeNode(2);
+        t1.left = new TreeNode(4);
+        root.left = t1;
+
+        TreeNode t2 = new TreeNode(5);
+        t2.left = new TreeNode(7);
+        TreeNode t3 = new TreeNode(3);
+        t3.left = t2;
+        t3.right = new TreeNode(6);
+        root.right = t3;
+
+        assertEquals(7, app.findBottomLeftValue(root));
+    }
 }

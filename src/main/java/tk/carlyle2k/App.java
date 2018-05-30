@@ -6,6 +6,30 @@ import java.util.*;
 public class App {
 
     /**
+     * 513. Find Bottom Left Tree Value
+     */
+    public int findBottomLeftValue(TreeNode root) {
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+
+        int ret = root.val;
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            if (temp.right != null) {
+                queue.offer(temp.right);
+            }
+
+            if (temp.left != null) {
+                queue.offer(temp.left);
+            }
+
+            ret = temp.val;
+        }
+
+        return ret;
+    }
+
+    /**
      * 824. Goat Latin
      */
     public String toGoatLatin(String S) {
