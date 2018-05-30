@@ -6,6 +6,34 @@ import java.util.*;
 public class App {
 
     /**
+     * 824. Goat Latin
+     */
+    public String toGoatLatin(String S) {
+        Set<Character> vowels = new HashSet<>(5);
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+
+        String[] words = S.split("\\s");
+
+        String ma = "ma";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            sb.append("a");
+            if (words[i].length() == 0) {
+            } else if (vowels.contains(words[i].substring(0, 1).toLowerCase().charAt(0))) {
+                words[i] = words[i] + ma + sb.toString();
+            } else {
+                words[i] = words[i].substring(1) + words[i].charAt(0) + ma + sb.toString();
+            }
+        }
+
+        return String.join(" ", words).trim();
+    }
+
+    /**
      * 841. Keys and Rooms
      */
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {

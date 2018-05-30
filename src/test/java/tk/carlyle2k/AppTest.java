@@ -167,4 +167,15 @@ public class AppTest {
 
         assertFalse(app.canVisitAllRooms(input));
     }
+
+    @Test
+    public void toGoatLatinTest() {
+        String input = " I";
+
+        assertEquals("Imaaa", app.toGoatLatin(input));
+
+        input = "The quick brown fox jumped over the lazy dog";
+
+        assertEquals("heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa", app.toGoatLatin(input));
+    }
 }
