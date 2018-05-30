@@ -2,11 +2,11 @@ package tk.carlyle2k;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class AppTest {
     private App app = new App();
@@ -119,5 +119,52 @@ public class AppTest {
         input = new int[][]{};
 
         assertArrayEquals(new int[][]{}, app.reconstructQueue(input));
+    }
+
+    @Test
+    public void canVisitAllRooms() {
+        List<List<Integer>> input = new ArrayList<>();
+        input.add(Arrays.asList(1));
+        input.add(Arrays.asList(2));
+        input.add(Arrays.asList(3));
+        input.add(new ArrayList<>());
+
+        assertTrue(app.canVisitAllRooms(input));
+
+        input.clear();
+        input.add(Arrays.asList(1, 3));
+        input.add(Arrays.asList(3, 0, 1));
+        input.add(Arrays.asList(2));
+        input.add(Arrays.asList(0));
+
+        assertFalse(app.canVisitAllRooms(input));
+
+        input.clear();
+        input.add(Arrays.asList(2));
+        input.add(new ArrayList<>());
+        input.add(Arrays.asList(1));
+
+        assertTrue(app.canVisitAllRooms(input));
+
+        input.clear();
+        input.add(new ArrayList<>());
+        input.add(Arrays.asList(1, 1));
+        input.add(Arrays.asList(2, 2));
+
+        assertFalse(app.canVisitAllRooms(input));
+
+        input.clear();
+        input.add(Arrays.asList(4));
+        input.add(Arrays.asList(3));
+        input.add(new ArrayList<>());
+        input.add(Arrays.asList(2, 5, 7));
+        input.add(Arrays.asList(1));
+        input.add(new ArrayList<>());
+        input.add(Arrays.asList(8, 9));
+        input.add(new ArrayList<>());
+        input.add(new ArrayList<>());
+        input.add(Arrays.asList(6));
+
+        assertFalse(app.canVisitAllRooms(input));
     }
 }

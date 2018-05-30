@@ -6,29 +6,61 @@ import java.util.*;
 public class App {
 
     /**
+     * 841. Keys and Rooms
+     */
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        boolean[] visited = new boolean[rooms.size()];
+        boolean[] doors = new boolean[rooms.size()];
+        doors[0] = true;
+
+        canVisitAllRoomsHelper(rooms, visited,  doors, 0);
+
+        for (boolean open : doors) {
+            if (!open) return false;
+        }
+
+        return true;
+    }
+
+    private void canVisitAllRoomsHelper(List<List<Integer>> rooms, boolean[] visited, boolean[] doors, int i) {
+        if (visited[i]) {
+            return;
+        }
+
+        for (int j : rooms.get(i)) {
+            if (j < rooms.size()) {
+                doors[j] = true;
+            }
+        }
+        visited[i] = true;
+
+        for (int j : rooms.get(i)) {
+            canVisitAllRoomsHelper(rooms, visited, doors, j);
+        }
+    }
+
+    /**
      * 406. Queue Reconstruction by Height
      */
     public int[][] reconstructQueue(int[][] people) {
         int[][] ret = new int[people.length][];
 
-        Comparator<int[]> c = Comparator.comparingInt(a -> a[0]);
+        Comparator<int[]> c = (a, b) -> a[0] == b[0] ? a[1] - b[1] : b[0] - a[0];
         Arrays.sort(people, c);
 
-        for (int i = 0; i < people.length; i++) {
-            int gap = people[i][1];
-            for (int j = 0; j < ret.length; j++) {
-                if (ret[j] == null && gap == 0) {
-                    ret[j] = people[i];
-                    break;
-                }
+        int n = people.length;
+        ArrayList<int[]> tmp = new ArrayList<>();
+        for (int i = 0; i < n; i++)
+            tmp.add(people[i][1], new int[]{people[i][0], people[i][1]});
 
-                if (ret[j] == null || ret[j][0] == people[i][0]) {
-                    gap--;
-                }
-            }
+        int[][] res = new int[people.length][2];
+        int i = 0;
+        for (int[] k : tmp) {
+            res[i][0] = k[0];
+            res[i++][1] = k[1];
         }
 
-        return ret;
+        return res;
     }
 
     /**
