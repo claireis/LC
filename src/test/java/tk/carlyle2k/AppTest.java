@@ -201,4 +201,33 @@ public class AppTest {
 
         assertEquals(7, app.findBottomLeftValue(root));
     }
+
+    @Test
+    public void singleNonDuplicateTest() {
+        // int[] input = {1, 1, 2, 3, 3, 4, 4, 8, 8};
+        //
+        // assertEquals(2, app.singleNonDuplicate(input));
+        //
+        // input = new int[]{3, 3, 7, 7, 10, 11, 11};
+        //
+        // assertEquals(10, app.singleNonDuplicate(input));
+        //
+        // input = new int[]{1, 2, 2};
+        //
+        // assertEquals(1, app.singleNonDuplicate(input));
+    }
+
+    @Test
+    public void largestValuesTest() {
+        TreeNode root = new TreeNode(1);
+        TreeNode t1 = new TreeNode(5);
+        root.right = t1;
+        TreeNode t2 = new TreeNode(2);
+        t1.right = t2;
+        t2.right = new TreeNode(5);
+        t2.left = new TreeNode(5);
+
+        assertEquals(Arrays.asList(1, 5, 2, 5), app.largestValues(root));
+
+    }
 }

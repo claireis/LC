@@ -6,6 +6,49 @@ import java.util.*;
 public class App {
 
     /**
+     * 515. Find Largest Value in Each Tree Row
+     */
+    public List<Integer> largestValues(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+
+        ArrayList<Integer> ret = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            int i = queue.size();
+            for (int j = 0; j < i; j++) {
+                TreeNode t = queue.poll();
+
+                if (t.left != null) {
+                    queue.offer(t.left);
+                }
+
+                if (t.right != null) {
+                    queue.offer(t.right);
+                }
+
+                list.add(t.val);
+            }
+
+            ret.add(largeVal(list));
+            list.clear();
+        }
+
+        return ret;
+    }
+
+    private int largeVal(ArrayList<Integer> list) {
+        int val = Integer.MIN_VALUE;
+        for (Integer i : list) {
+            val = i > val ? i : val;
+        }
+        return val;
+    }
+
+    /**
      * 513. Find Bottom Left Tree Value
      */
     public int findBottomLeftValue(TreeNode root) {
