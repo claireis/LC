@@ -12,6 +12,16 @@ public class AppTest {
     private App app = new App();
 
     @Test
+    public void repeatNTimes() {
+        int[] A = {1, 2, 3, 3};
+
+        assertEquals(3, app.repeatedNTimes(A));
+
+        A = new int[]{5,1,5,2,5,3,5,4};
+        assertEquals(5, app.repeatedNTimes(A));
+    }
+
+    @Test
     public void flipAndInvertImage() {
         int[][] m1 = new int[][] {
                 {1, 1, 0},

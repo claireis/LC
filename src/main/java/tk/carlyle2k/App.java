@@ -4,6 +4,27 @@ package tk.carlyle2k;
 import java.util.*;
 
 public class App {
+    
+    /**
+     * 961. N-Repeated Element in Size 2N Array
+     */
+    public int repeatedNTimes(int[] A) {
+        if (A == null) return -1;
+
+        boolean[] array = new boolean[10000];
+
+        for (int a : A) {
+            if (array[a]) {
+                return a;
+            } else {
+                array[a] = true;
+            }
+
+        }
+
+        return -1;
+    }
+
 
     /**
      * 515. Find Largest Value in Each Tree Row
