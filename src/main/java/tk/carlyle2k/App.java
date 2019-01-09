@@ -11,7 +11,7 @@ public class App {
     public int repeatedNTimes(int[] A) {
         if (A == null) return -1;
 
-        boolean[] array = new boolean[10000];
+        boolean[] array = new boolean[10001];
 
         for (int a : A) {
             if (array[a]) {
